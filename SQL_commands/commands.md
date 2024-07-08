@@ -43,7 +43,7 @@ to adds the specified row or rows:
 
     INSERT INTO celebs (id, name, age)
     VALUES (4, "Taylor Swift", 33);
-
+#
                                                                 MANIPULATION
 
 Look into table:
@@ -72,9 +72,20 @@ to alter the table:
 
     ALTER TABLE celebs
     ADD COLUMN twitter_handle TEXT;
-
+#
 
                                                             WHERE CLAUSE and OPERATORS with WHERE.
+summarize:
+
+    SELECT is the clause we use every time we want to query information from a database.
+    AS renames a column or table.
+    DISTINCT return unique values.
+    WHERE is a popular command that lets you filter the results of the query based on conditions that you specify.
+    LIKE and BETWEEN are special operators.
+    AND and OR combines multiple conditions.
+    ORDER BY sorts the result.
+    LIMIT specifies the maximum number of rows that the query will return.
+    CASE creates different outputs.
 
 using WHERE to get specific information
 
@@ -178,7 +189,7 @@ Similar to AND, the OR operator can also be used to combine multiple conditions 
     FROM movies
     WHERE genre = 'romance'
     OR genre = 'comedy';
-
+#
                                                     That’s it with WHERE and its operators. Moving on!
 
 
@@ -230,19 +241,6 @@ Suppose we want to condense the ratings in movies to three levels:
       END AS 'Review'
      END
     FROM movies;
-
-summarize:
-
-    SELECT is the clause we use every time we want to query information from a database.
-    AS renames a column or table.
-    DISTINCT return unique values.
-    WHERE is a popular command that lets you filter the results of the query based on conditions that you specify.
-    LIKE and BETWEEN are special operators.
-    AND and OR combines multiple conditions.
-    ORDER BY sorts the result.
-    LIMIT specifies the maximum number of rows that the query will return.
-    CASE creates different outputs.
-
 
 Constraints that add information about how a column can be used are invoked after specifying the data type for a column. They can be used to tell the database to reject inserted data that does not adhere to a certain restriction. The statement below sets constraints on the celebs table.
 
