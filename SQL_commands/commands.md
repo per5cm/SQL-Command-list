@@ -44,7 +44,7 @@ to adds the specified row or rows:
     INSERT INTO celebs (id, name, age)
     VALUES (4, "Taylor Swift", 33);
 #
-                                                                MANIPULATION
+                                                                    MANIPULATION
 
 Look into table:
 
@@ -250,3 +250,114 @@ Constraints that add information about how a column can be used are invoked afte
        date_of_birth TEXT NOT NULL,
        date_of_death TEXT DEFAULT 'Not Applicable'
     );
+
+                                                                    Agreggate
+
+Calculations performed on multiple rows of a table are called aggregates.
+
+Short summary:
+    
+    COUNT(): count the number of rows
+    SUM(): the sum of the values in a column
+    MAX()/MIN(): the largest/smallest value
+    AVG(): the average of the values in a column
+    ROUND(): round the values in the column
+
+Aggregate functions combine multiple rows together to form a single value of more meaningful information.
+
+GROUP BY is a clause used with aggregate functions to combine data from one or more columns.
+HAVING limit the results of a query based on an aggregate property.
+
+#
+We can use COUNT command to count how many rows are in table. COUNT fuction that takes name as a argument, counts the number of non-empty values in column.
+
+    SELECT COUNT(*)
+    FROM table_name;
+
+    SELECT COUNT(*)
+    FROM fake_apps
+    WHERE price = '0'
+
+The fuction SUM() makes it easy to add all values in particular column.
+
+    SELECT SUM(downloads)
+    FROM fake_apps;
+
+The function of Max / Min, returns the highest and lowest values in column, respectively.
+How many downloads does the most popular app have? also max price in column etc.
+
+    SELECT MAX(downloads)
+    FROM fake_apps;
+
+The function with Average, calculates average value of particular column.
+
+    SELECT AVG(downloads)
+    FROM fake_apps;
+
+The function of Round, takes two arguments inside the parenthesis:
+
+a column name
+an integer
+
+    SELECT ROUND(price, 0)
+    FROM fake_apps;
+
+    SELECT name, ROUND(price, 0)
+    FROM fake_apps;
+
+    SELECT ROUND(AVG(price), 2)
+    FROM fake_apps;
+
+The fuction Group By I, oftentimes, we will want to calculate an aggregate for data with certain characteristics.
+The GROUP BY statement comes after any WHERE statements, but before ORDER BY or LIMIT.
+
+    SELECT year,
+        AVG(imdb_rating)
+    FROM movies
+    GROUP BY year
+    ORDER BY year;
+
+    SELECT price, COUNT(*) AS total_apps /* Using AS command we give an alias of total_apps for better readability*/
+    FROM fake_apps
+    WHERE downloads > 20000
+    GROUP BY price;
+
+    SELECT category, SUM(downloads) AS total_downloads
+    FROM fake_apps
+    GROUP BY category;
+
+The function Group By II, calculation on column.
+
+    SELECT ROUND(imdb_rating),
+        COUNT(name)
+    FROM movies
+    GROUP BY 1
+    ORDER BY 1;
+
+    SELECT category, 
+        price,
+        AVG(downloads)
+    FROM fake_apps
+    GROUP BY category, price;
+
+The function of Having, to filter which group to include and which to exclude.
+
+For instance, imagine that we want to see how many movies of different genres were produced each year, but we only care about years and genres with at least 10 movies. 
+
+HAVING is very similar to WHERE. In fact, all types of WHERE clauses you learned about thus far can be used with HAVING.
+
+    When we want to limit the results of a query based on values of the individual rows, use WHERE.
+    When we want to limit the results of a query based on an aggregate property, use HAVING.
+
+HAVING statement always comes after GROUP BY, but before ORDER BY and LIMIT.
+
+    SELECT year,
+        genre,
+        COUNT(name)
+    FROM movies
+    GROUP BY 1, 2
+    HAVING COUNT(name) > 10;
+
+
+
+
