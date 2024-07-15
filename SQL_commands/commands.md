@@ -3,6 +3,7 @@
 
                                                                     BASICS
 
+
 SQL is a programming language designed to manipulate and manage data stored in relational databases.
 
     A relational database is a database that organizes information into one or more tables.
@@ -16,6 +17,7 @@ A statement is a string of characters that the database recognizes as a valid co
     ALTER TABLE changes an existing table.
     UPDATE edits a row in a table.
     DELETE FROM deletes rows from a table.
+
 
 Create new table:
 
@@ -44,7 +46,9 @@ to adds the specified row or rows:
     INSERT INTO celebs (id, name, age)
     VALUES (4, "Taylor Swift", 33);
 #
+
                                                                     MANIPULATION
+
 
 Look into table:
 
@@ -74,7 +78,10 @@ to alter the table:
     ADD COLUMN twitter_handle TEXT;
 #
 
+
                                                             WHERE CLAUSE and OPERATORS with WHERE.
+
+
 summarize:
 
     SELECT is the clause we use every time we want to query information from a database.
@@ -86,6 +93,7 @@ summarize:
     ORDER BY sorts the result.
     LIMIT specifies the maximum number of rows that the query will return.
     CASE creates different outputs.
+
 
 using WHERE to get specific information
 
@@ -190,7 +198,9 @@ Similar to AND, the OR operator can also be used to combine multiple conditions 
     WHERE genre = 'romance'
     OR genre = 'comedy';
 #
+
                                                     That’s it with WHERE and its operators. Moving on!
+
 
 
 We can sort the results using ORDER BY, either alphabetically or numerically. Note: ORDER BY always goes after WHERE (if WHERE is present).
@@ -251,7 +261,9 @@ Constraints that add information about how a column can be used are invoked afte
        date_of_death TEXT DEFAULT 'Not Applicable'
     );
 
+
                                                                     Agreggate
+
 
 Calculations performed on multiple rows of a table are called aggregates.
 
@@ -262,6 +274,7 @@ Short summary:
     MAX()/MIN(): the largest/smallest value
     AVG(): the average of the values in a column
     ROUND(): round the values in the column
+
 
 Aggregate functions combine multiple rows together to form a single value of more meaningful information.
 
